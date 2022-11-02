@@ -20,4 +20,4 @@ runs:
 
     - name: Install Node Dependencies
       shell: bash
-      run: npm ci
+      run: npm ci --legacy-peer-deps
