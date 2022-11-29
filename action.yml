@@ -6,12 +6,11 @@ runs:
     - name: Get npm Cache Directory
       id: npm-cache-dir
       shell: bash
-      run: |
-        echo "::set-output name=dir::$(npm config get cache)"
+      run: echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
 
     - name: Cache
       id: npm-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ${{ steps.npm-cache-dir.outputs.dir }}
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
